@@ -1998,5 +1998,84 @@ The deepest stake of this programme, therefore, is not the production of new kno
 </div>
 
 </div><!-- end #expanded-abstract -->
+  <!-- ════════════════════════════════════════════════════════
+     ALIGNMENT FIX · Śāstra Knowledge Ecology · Page VI
+     Paste this entire block just before </body>
+     Three targeted fixes — no other changes needed.
+════════════════════════════════════════════════════════ -->
+
+<style id="sastra-alignment-fix">
+/* ── FIX 1: .am-head must be display:block inside the float ── */
+.abs-marginal .am-head,
+.abs-marginal span.am-head {
+  display: block;
+  font-family: "Cinzel", serif;
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--crimson-b);
+  margin-bottom: 6px;
+}
+
+/* ── FIX 2: p.abs-clearfix cannot legally contain block-level floats;
+             establish a block-formatting context to contain the float ── */
+p.abs-clearfix {
+  display: flow-root;
+  overflow: hidden;
+}
+div.abs-clearfix {
+  display: flow-root;
+}
+
+/* ── FIX 3: pullquote and final panel must clear the float ── */
+#abs-stakes .abs-pullquote,
+#abs-stakes .panel.gold,
+#expanded-abstract .fnav {
+  clear: both;
+  margin-top: 36px;
+}
+</style>
+
+<script id="sastra-dom-fix">
+/* DOM surgery: moves the float out of the invalid <p> wrapper */
+(function () {
+  var bad = document.querySelector('p.abs-clearfix');
+  if (!bad) return; // already patched in source
+
+  var marginal = bad.querySelector('.abs-marginal');
+  if (!marginal) return;
+
+  /* build replacement <div class="abs-clearfix"> */
+  var wrapper = document.createElement('div');
+  wrapper.className = 'abs-clearfix';
+  wrapper.style.marginBottom = '20px';
+
+  /* clone the marginal note — swap <span class="am-head"> for <div class="am-head"> */
+  var cleanMarginal = marginal.cloneNode(true);
+  var amSpan = cleanMarginal.querySelector('span.am-head');
+  if (amSpan) {
+    var amDiv = document.createElement('div');
+    amDiv.className = 'am-head';
+    amDiv.textContent = amSpan.textContent;
+    amSpan.parentNode.replaceChild(amDiv, amSpan);
+  }
+
+  /* gather non-marginal text into a clean <p> */
+  var bodyP = document.createElement('p');
+  Array.from(bad.childNodes).forEach(function (n) {
+    if (n !== marginal) bodyP.appendChild(n.cloneNode(true));
+  });
+  /* strip leading whitespace text node */
+  if (bodyP.firstChild && bodyP.firstChild.nodeType === 3) {
+    bodyP.firstChild.textContent = bodyP.firstChild.textContent.replace(/^\s+/, '');
+  }
+
+  wrapper.appendChild(cleanMarginal);
+  wrapper.appendChild(bodyP);
+  bad.parentNode.replaceChild(wrapper, bad);
+
+  console.log('[SāstraFix] Page VI alignment corrected.');
+}());
+</script>
 </body>
 </html>
