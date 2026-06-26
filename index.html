@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Śāstra as Self-Correcting Knowledge Ecology | Module I — Framework & Vectors I–II</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+Devanagari:wght@400;500;700&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#c9a86a;--gold-b:#e8cb8a;--crimson:#7a1f2b;--crimson-b:#9c2c3a;
+  --bg:#0b0906;--panel:#16110e;--panel2:#1d1713;--border:#3a2e22;
+  --text:#e8ddc8;--dim:#a89884;--faint:#7a6c5a;--cream:#f3ead6;
+  --saffron:#d9883f;--jade:#2e6b4f;--jade-b:#4a9e77;
+  --v1:#7a4fa0;--v1b:#c084fc;
+  --v2:#1e5f74;--v2b:#67c7d8;
+  --v3:#8a4a2b;--v3b:#f0a070;
+  --v4:#2b5a2b;--v4b:#6fcf6f;
+  --v5:#5a3a1a;--v5b:#d4a060;
+  --v6:#4a2b6b;--v6b:#b07ae8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"EB Garamond",serif;font-size:17px;line-height:1.85;
+  background-image:radial-gradient(ellipse at top left,rgba(122,31,43,0.06),transparent 55%),
+  radial-gradient(ellipse at bottom right,rgba(201,168,106,0.04),transparent 55%)}
+.dn{font-family:"Noto Serif Devanagari",serif}
+h1,h2,h3,h4,.cinzel{font-family:"Cinzel",serif;letter-spacing:.03em}
+.cg{font-family:"Cormorant Garamond",serif}
+.mono{font-family:"Source Code Pro",monospace;font-size:.8em}
+.iast{font-family:"Cormorant Garamond";font-style:italic;color:var(--gold);font-size:1em}
+
+/* COVER PAGE */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:60px 40px;border-bottom:1px solid var(--border);
+  background:radial-gradient(ellipse at center,rgba(122,31,43,0.12),transparent 70%)}
+.cover .series-label{font-family:"Cinzel";font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--saffron);margin-bottom:20px}
+.cover .dn-title{font-family:"Noto Serif Devanagari";font-size:36px;color:var(--gold-b);line-height:1.4;margin-bottom:16px}
+.cover h1{font-size:28px;color:var(--cream);line-height:1.3;margin-bottom:12px;max-width:820px}
+.cover .subtitle{font-family:"Cormorant Garamond";font-size:20px;font-style:italic;color:var(--dim);
+  margin-bottom:32px;max-width:700px}
+.cover .module-badge{font-family:"Cinzel";font-size:11px;letter-spacing:.2em;
+  border:1px solid var(--crimson-b);color:var(--crimson-b);padding:6px 18px;border-radius:3px;
+  display:inline-block;margin-bottom:24px}
+.cover .page-count{font-size:13px;color:var(--faint);margin-top:16px}
+.cover-meta{display:flex;gap:40px;margin-top:28px;flex-wrap:wrap;justify-content:center}
+.cover-meta-item{text-align:center}
+.cover-meta-item .val{font-family:"Cinzel";font-size:22px;color:var(--gold-b)}
+.cover-meta-item .lbl{font-size:12px;color:var(--faint);margin-top:4px}
+
+/* NAVIGATION */
+.sidenav{position:fixed;left:0;top:0;height:100vh;width:270px;background:#0e0905;
+  border-right:1px solid var(--border);overflow-y:auto;padding:20px 0 40px;z-index:50}
+.sidenav::-webkit-scrollbar{width:4px}
+.sidenav::-webkit-scrollbar-thumb{background:var(--border)}
+.sidenav .sn-brand{padding:0 18px 16px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.sidenav .sn-brand .om{font-size:22px;color:var(--gold-b);display:block;margin-bottom:4px}
+.sidenav .sn-brand h2{font-family:"Cinzel";font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream)}
+.sidenav .sn-brand p{font-size:11px;color:var(--faint);margin-top:3px}
+.sn-group-label{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--faint);padding:8px 18px 3px}
+.sn-link{display:block;padding:5px 18px;font-size:12px;color:var(--dim);text-decoration:none;
+  border-left:2px solid transparent;transition:all .15s;line-height:1.4}
+.sn-link:hover{color:var(--gold-b);background:rgba(201,168,106,0.04)}
+.sn-link.active{color:var(--gold-b);border-left-color:var(--crimson-b);background:rgba(122,31,43,0.1)}
+.module-pills{display:flex;flex-wrap:wrap;gap:5px;padding:10px 18px;margin-top:6px}
+.mod-pill{font-size:10px;font-family:"Cinzel";padding:3px 9px;border-radius:3px;border:1px solid var(--border);
+  color:var(--faint);text-decoration:none;transition:all .15s}
+.mod-pill:hover{border-color:var(--gold);color:var(--gold)}
+.mod-pill.current{border-color:var(--crimson-b);color:var(--crimson-b)}
+
+/* MAIN */
+.main-wrap{margin-left:270px}
+.content{max-width:900px;padding:60px 52px 80px}
+
+/* SECTION HEADS */
+.chapter-head{margin:60px 0 32px}
+.chapter-head .ch-number{font-family:"Source Code Pro",monospace;font-size:10px;letter-spacing:.14em;
+  color:var(--faint);border:1px solid var(--border);padding:3px 8px;border-radius:2px;display:inline-block;margin-bottom:10px}
+.chapter-head h2{font-size:24px;color:var(--cream);line-height:1.25;margin-bottom:8px}
+.chapter-head .ch-dn{font-family:"Noto Serif Devanagari";font-size:18px;color:var(--gold-b);display:block;margin-bottom:10px}
+.chapter-head .ch-sub{font-family:"Cormorant Garamond";font-style:italic;font-size:18px;color:var(--dim)}
+.section-label{font-family:"Cinzel";font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--saffron);margin:40px 0 16px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:"";width:24px;height:1px;background:var(--saffron);flex-shrink:0}
+h3.sub{font-family:"Cinzel";font-size:16px;color:var(--gold-b);margin:28px 0 12px}
+h4.subsub{font-family:"Cinzel";font-size:13px;color:var(--saffron);margin:22px 0 10px;letter-spacing:.06em}
+p{margin-bottom:16px}p:last-child{margin-bottom:0}
+
+/* ABSTRACT */
+.abstract{font-family:"Cormorant Garamond";font-size:18px;color:var(--dim);font-style:italic;
+  line-height:1.75;margin-bottom:18px;padding-left:20px;border-left:3px solid var(--crimson)}
+
+/* VECTOR BOXES — colour coded */
+.vector-box{border:1px solid;border-radius:6px;padding:24px 28px;margin:28px 0}
+.vector-box .vb-head{font-family:"Cinzel";font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px}
+.vector-box h3{font-family:"Cinzel";font-size:17px;margin-bottom:12px;line-height:1.3}
+.vector-box p{font-size:15.5px;color:var(--dim);line-height:1.75}
+.vb1{border-color:var(--v1);background:rgba(122,79,160,0.05)}.vb1 .vb-head,.vb1 h3{color:var(--v1b)}
+.vb2{border-color:var(--v2);background:rgba(30,95,116,0.05)}.vb2 .vb-head,.vb2 h3{color:var(--v2b)}
+.vb3{border-color:var(--v3);background:rgba(138,74,43,0.05)}.vb3 .vb-head,.vb3 h3{color:var(--v3b)}
+.vb4{border-color:var(--v4);background:rgba(43,90,43,0.05)}.vb4 .vb-head,.vb4 h3{color:var(--v4b)}
+.vb5{border-color:var(--v5);background:rgba(90,58,26,0.05)}.vb5 .vb-head,.vb5 h3{color:var(--v5b)}
+.vb6{border-color:var(--v6);background:rgba(74,43,107,0.05)}.vb6 .vb-head,.vb6 h3{color:var(--v6b)}
+
+/* PANEL */
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:5px;padding:22px 26px;margin:22px 0}
+.panel h4{font-family:"Cinzel";font-size:13px;color:var(--gold-b);margin-bottom:10px}
+.panel p,.panel li{font-size:14.5px;color:var(--dim);line-height:1.7}
+.panel ul,.panel ol{padding-left:20px}
+.panel li{margin-bottom:7px}
+.panel.research{border-left:3px solid #4a6b8a}.panel.research h4{color:#6fa3cc}
+.panel.jade{border-left:3px solid var(--jade)}.panel.jade h4{color:var(--jade-b)}
+.panel.gold{border-left:3px solid var(--gold)}.panel.gold h4{color:var(--gold-b)}
+
+/* SANSKRIT */
+.skt{font-family:"Noto Serif Devanagari";font-size:20px;color:var(--cream);
+  background:var(--panel2);border-left:3px solid var(--crimson-b);
+  padding:14px 20px;margin:18px 0;border-radius:0 4px 4px 0;line-height:2}
+
+/* QUOTE */
+blockquote{border-left:3px solid var(--gold);padding:10px 20px;margin:18px 0;
+  font-family:"Cormorant Garamond";font-style:italic;font-size:18px;color:var(--text);
+  background:rgba(201,168,106,0.04)}
+blockquote cite{display:block;margin-top:6px;font-size:13px;color:var(--faint);font-style:normal}
+
+/* TABLE */
+table.data{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}
+table.data thead tr{background:rgba(122,31,43,0.15)}
+table.data th{text-align:left;color:var(--gold-b);font-family:"Cinzel";font-size:9.5px;
+  letter-spacing:.07em;text-transform:uppercase;padding:9px 12px;border-bottom:2px solid var(--crimson)}
+table.data td{padding:8px 12px;border-bottom:1px solid rgba(58,46,34,0.45);color:var(--dim);vertical-align:top}
+table.data td.hi{color:var(--saffron);font-family:"Cinzel";font-size:12px}
+table.data tr:nth-child(even) td{background:rgba(201,168,106,0.02)}
+
+/* STATS */
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin:22px 0}
+.stat{flex:1;min-width:110px;background:var(--panel);border:1px solid var(--border);
+  border-radius:5px;padding:14px 16px;text-align:center}
+.stat .sv{font-family:"Cinzel";font-size:26px;color:var(--gold-b);line-height:1}
+.stat .sl{font-size:11px;color:var(--faint);margin-top:5px;line-height:1.4}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+
+/* PAGE BREAK HINT */
+.page-break{border-top:1px solid var(--border);margin:50px 0 40px;position:relative}
+.page-break::after{content:attr(data-page);position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  background:var(--bg);padding:0 14px;font-family:"Source Code Pro",monospace;font-size:10px;color:var(--faint)}
+
+/* FOOTNOTES */
+.footnotes{margin-top:50px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--faint)}
+.footnotes h4{font-family:"Cinzel";font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.fn{margin-bottom:6px;padding-left:22px;text-indent:-22px;line-height:1.55}
+.fn-num{color:var(--saffron);font-family:"Source Code Pro",monospace;font-size:10px;margin-right:5px}
+
+/* FOOTER NAV */
+.fnav{display:flex;justify-content:space-between;align-items:center;
+  margin-top:50px;padding-top:18px;border-top:1px solid var(--border)}
+.fnav a{color:var(--gold);text-decoration:none;font-family:"Cinzel";font-size:12px;letter-spacing:.05em}
+.fnav a:hover{color:var(--gold-b)}
+
+@media print{
+  .sidenav{display:none}
+  .main-wrap{margin-left:0}
+  .content{padding:40px}
+  body{background:white;color:#1a1a1a}
+}
+@media(max-width:900px){
+  .sidenav{display:none}
+  .main-wrap{margin-left:0}
+  .content{padding:28px 18px 60px}
+}
+</style>
+</head>
+<body>
+
+<nav class="sidenav">
+  <div class="sn-brand">
+    <span class="om dn">ॐ</span>
+    <h2>Śāstra Knowledge Ecology</h2>
+    <p>The Seventh Angle · White Paper Series</p>
+  </div>
+  <div class="sn-group-label">Module I Contents</div>
+  <a class="sn-link active" href="#cover">Cover &amp; Abstract</a>
+  <a class="sn-link" href="#preface">Preface — The Gap</a>
+  <a class="sn-link" href="#framework">§1 · The Framework</a>
+  <a class="sn-link" href="#ecology">§2 · Knowledge Ecology Concept</a>
+  <a class="sn-link" href="#correction">§3 · Error Correction in Śāstra</a>
+  <a class="sn-link" href="#six-existing">§4 · Beyond the Six Existing Angles</a>
+  <a class="sn-link" href="#vector1">§5 · Vector I — Cross-Citation Error Signals</a>
+  <a class="sn-link" href="#vector1-method">§6 · Vector I Methodology</a>
+  <a class="sn-link" href="#vector2">§7 · Vector II — The Bādhā Cascade</a>
+  <a class="sn-link" href="#vector2-cases">§8 · Vector II Case Studies</a>
+  <a class="sn-link" href="#references">References &amp; Notes</a>
+  <div class="sn-group-label">All Modules</div>
+  <div class="module-pills">
+    <a class="mod-pill current" href="module-1.html">I</a>
+    <a class="mod-pill" href="module-2.html">II</a>
+    <a class="mod-pill" href="module-3.html">III</a>
+    <a class="mod-pill" href="module-4.html">IV</a>
+    <a class="mod-pill" href="module-5.html">V</a>
+  </div>
+</nav>
+
+<div class="main-wrap">
+<div class="content">
+
+<!-- COVER -->
+<div class="cover" id="cover">
+  <span class="module-badge">Module I of V</span>
+  <div class="dn-title">शास्त्रोद्भवः स्वयंशोधन-ज्ञानपारिस्थितिकी</div>
+  <h1>Śāstra as Self-Correcting Knowledge Ecology</h1>
+  <p class="subtitle">The Seventh Angle: A New Research Framework Across Sixteen Classical Disciplines</p>
+  <p style="font-family:'Cinzel';font-size:11px;letter-spacing:.16em;color:var(--gold);margin-bottom:8px">Module I — Conceptual Framework &amp; Research Vectors I and II</p>
+  <p style="font-size:14px;color:var(--faint)">Cross-Citation Error Signals · The Bādhā Cascade Theory</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="val">45</div><div class="lbl">Pages this module</div></div>
+    <div class="cover-meta-item"><div class="val">6</div><div class="lbl">Research vectors total</div></div>
+    <div class="cover-meta-item"><div class="val">16</div><div class="lbl">Śāstric disciplines</div></div>
+    <div class="cover-meta-item"><div class="val">2,400</div><div class="lbl">Years of evidence</div></div>
+  </div>
+  <p class="page-count">This paper is Part I of V in the Śāstra Knowledge Ecology White Paper Series</p>
+</div>
+
+<!-- PREFACE -->
+<div class="chapter-head" id="preface">
+  <span class="ch-number">PREFACE</span>
+  <h2>The Unasked Question</h2>
+  <span class="ch-dn">अनुत्तरितः प्रश्नः</span>
+  <p class="ch-sub">What the existing six-angle framework deliberately did not ask</p>
+</div>
+
+<p class="abstract">The preceding six-angle research study of the sixteen classical śāstras — textual, philosophical, comparative, scientific, historical, and epistemological — opened ninety-six research vectors and proposed four academic research programmes. It treated each śāstra as an object of analysis. This paper proposes a fundamentally different question: not what each śāstra knows, but how the śāstric system as a whole manages the production, detection, and correction of error across its disciplines. This is the seventh angle. No existing scholarship has formally treated the inter-śāstric network as a self-correcting epistemic ecology.</p>
+
+<p>Every major research programme in the six-angle study identified what is missing — lost texts, unresolved dating questions, unformalized logical equivalences. But no programme asked the deeper structural question: the śāstric tradition lasted as a living, generative intellectual system for 2,500 years across the most adverse conditions any scholarly tradition has ever faced — foreign invasions, colonial suppression, institutional collapse, manuscript destruction. How? The answer cannot be simply "oral transmission" or "institutional inertia." Something about the architecture of the śāstric system itself made it robust. This paper proposes that what made it robust was a specific error-correction mechanism operating across disciplinary boundaries — and that this mechanism has never been formally described.</p>
+
+<div class="section-label">The Core Claim</div>
+
+<p>The claim of this paper, developed across six research vectors distributed across five modules, is this: the classical śāstric tradition functioned as a <em>knowledge ecology</em> — a system in which individual disciplines were not epistemically isolated but embedded in a web of cross-disciplinary correction relationships. When Nyāya made a claim that Mīmāṃsā could not accept, the result was not disciplinary collapse but a formally structured correction process. When Āyurveda's empirical findings conflicted with Sāṃkhya's cosmology, neither discipline simply absorbed the other — instead, both were refined at the points of contact. The system had error-correction built into its architecture, not added as a later feature.</p>
+
+<p>This is not merely a historical observation. It constitutes a general model of sustainable disciplinary knowledge production that contemporary academic research — currently facing its own crisis of inter-disciplinary insularity, reproducibility failure, and fragmentation — has urgent reason to study.</p>
+
+<div class="page-break" data-page="p. 3"></div>
+
+<!-- FRAMEWORK -->
+<div class="chapter-head" id="framework">
+  <span class="ch-number">§1</span>
+  <h2>The Conceptual Framework</h2>
+  <span class="ch-dn">सप्तमकोणस्य संकल्पना</span>
+  <p class="ch-sub">What "knowledge ecology" means and why the śāstric tradition instantiates it</p>
+</div>
+
+<p>The term "ecology" is precise. Ecology studies not individual organisms but the dynamic relationships among organisms that produce stable, adaptive, self-regulating systems. The classical definition (Haeckel 1866) describes ecology as the study of the relationships between living organisms and their environment — including their relationships with each other. Applied to knowledge systems, this means: an epistemic ecology is a network of disciplines whose validity is maintained not by the internal consistency of each discipline alone but by the dynamic interactions among disciplines.</p>
+
+<p>The concept of an epistemic ecology was first suggested, in different vocabulary, by Quine's "web of belief" (1951) — the image of knowledge as a fabric in which no strand is immune to revision but the revision of peripheral strands is preferred to the revision of central ones. But Quine's model is static: it describes the synchronic structure of a belief system, not the diachronic process by which errors are corrected over centuries of living intellectual production.</p>
+
+<div class="section-label">What Makes the Śāstric Case Distinctive</div>
+
+<p>The śāstric tradition offers something Quine's model does not: a 2,500-year laboratory experiment in how a knowledge ecology actually functions over time. The sixteen classical disciplines studied in the six-angle white paper were not parallel, isolated sciences. They shared vocabulary, shared argumentative methods, shared canonical texts, shared institutional spaces (the royal court, the temple, the pāṭhaśālā), and — crucially — shared scholars. The same intellectual who was a grammarian by training was expected to know Nyāya epistemology, Mīmāṃsā hermeneutics, and Dharmaśāstric norms. This cross-disciplinary training was not incidental. It was structurally necessary, because the disciplines needed each other's resources to maintain their own validity.</p>
+
+<div class="grid2">
+<div class="panel gold">
+  <h4>What an epistemic ecology requires</h4>
+  <ul>
+    <li>Disciplines that share a common referent (reality, text, practice)</li>
+    <li>Mechanisms for detecting inter-disciplinary conflict</li>
+    <li>Formal procedures for resolving those conflicts</li>
+    <li>Memory: institutional transmission of past corrections</li>
+    <li>A shared metalanguage that all disciplines can use to argue across boundaries</li>
+  </ul>
+</div>
+<div class="panel jade">
+  <h4>What the śāstric system provided</h4>
+  <ul>
+    <li>Shared referent: the Veda and empirical reality</li>
+    <li>Pūrvapakṣa-siddhānta debate structure across disciplines</li>
+    <li>Hierarchical conflict-resolution (śruti &gt; smṛti &gt; sadācāra)</li>
+    <li>Commentarial tradition recording every previous correction</li>
+    <li>Sanskrit as cross-disciplinary metalanguage</li>
+  </ul>
+</div>
+</div>
+
+<h3 class="sub">The Śāstric Metalanguage as Error-Detection Infrastructure</h3>
+
+<p>Sanskrit's role as the śāstric metalanguage deserves extended attention, because it is not merely a communication medium but an error-detection tool. The Aṣṭādhyāyī's grammar generates Sanskrit morphology with such precision that any claim expressed in Sanskrit is simultaneously subject to grammatical audit. A philosophical claim that requires a grammatically anomalous construction signals potential conceptual incoherence — Pāṇini's grammar becomes a background validator for all other śāstric claims expressed in its language.</p>
+
+<p>This is not a trivial observation. It means the śāstric tradition possessed, from the moment Pāṇini's grammar was established as authoritative (c. 350 BCE), a universal syntactic validator for all claims made within it. No Western intellectual tradition possesses an equivalent: Aristotle's logic provides a propositional validator, but not a linguistic one; formal logic formalizes argument structure but not the language in which arguments are expressed. The Vyākaraṇa tradition provided both simultaneously.</p>
+
+<div class="panel research">
+  <h4>Research Pointer — The Grammar as Universal Background Validator</h4>
+  <p>No existing study has systematically examined how often philosophical or legal disputes in the śāstric literature were resolved by appeal to grammatical analysis of the disputed terms. Patañjali's Mahābhāṣya contains numerous instances where he resolves philosophical disputes by showing that the disputant's claim requires a grammatically untenable construction — but the corpus of such cross-disciplinary grammatical adjudications has never been compiled. This compilation would constitute primary evidence for the grammar's role as ecosystem-level error-detection infrastructure.</p>
+</div>
+
+<div class="page-break" data-page="p. 6"></div>
+
+<!-- ECOLOGY CONCEPT -->
+<div class="chapter-head" id="ecology">
+  <span class="ch-number">§2</span>
+  <h2>The Knowledge Ecology Concept in Depth</h2>
+  <span class="ch-dn">ज्ञानपारिस्थितिकी — विस्तृतविचारः</span>
+  <p class="ch-sub">Borrowing from systems ecology to describe inter-śāstric dynamics</p>
+</div>
+
+<p>Systems ecology identifies four core structural properties that make an ecosystem resilient: redundancy (multiple species performing the same function), modularity (damage to one subsystem does not cascade to all), diversity (varied approaches to common problems), and connectance (the density of inter-species relationships). The śāstric system exhibits all four.</p>
+
+<h3 class="sub">Redundancy</h3>
+<p>Multiple śāstric disciplines addressed the same fundamental questions from different angles. The question "what is valid knowledge?" was addressed by Nyāya (pramāṇa theory), Mīmāṃsā (śabdapramāṇa), Vyākaraṇa (grammatical validity), Āyurveda (āptopadeśa), and Vedānta (mahāvākyajñāna). This redundancy meant that if any one tradition's answer to the question was refuted, the question itself did not collapse — it migrated to be re-examined by the remaining traditions. The concept of valid testimony, for instance, survived the Nyāya-Buddhist epistemological wars of the 5th–10th centuries precisely because Mīmāṃsā's independent account of śabdapramāṇa kept the concept alive in a different theoretical register.</p>
+
+<h3 class="sub">Modularity</h3>
+<p>The śāstric disciplines were modular in a specific technical sense: each possessed its own founding text (mūlagrantha), its own commentarial tradition, its own technical vocabulary, and its own institutional home. This modularity meant that radical challenges to one discipline — Buddhism's near-total refutation of Vaiśeṣika atomic theory by the 8th century CE, for instance — did not destabilize the other disciplines. Vaiśeṣika could collapse as a living physics tradition while Nyāya continued to develop, absorbing what it needed from Vaiśeṣika and leaving the rest.</p>
+
+<h3 class="sub">Diversity</h3>
+<p>The diversity of foundational ontological commitments across the śāstras — Nyāya's pluralist realism, Mīmāṃsā's linguistic idealism, Sāṃkhya's strict dualism, Advaita's non-dualism, Vaiśeṣika's atomic pluralism — was not intellectual disorder. It was a form of methodological diversification. Each ontological commitment generated a different set of research problems and a different set of solutions, ensuring that the tradition as a whole was not dependent on any single metaphysical bet. When Advaita was refuted by Rāmānuja, the tradition did not collapse — it gained a new research programme.</p>
+
+<h3 class="sub">Connectance and the Problem of Too Many Connections</h3>
+<p>Systems ecology also shows that too-high connectance is destabilizing: if every species is tightly coupled to every other, a single perturbation cascades everywhere. The śāstric tradition managed connectance with considerable sophistication. Disciplines were connected for specific, bounded purposes — Mīmāṃsā hermeneutics was borrowed by Dharmaśāstra for textual interpretation but not for its metaphysics; Nyāya logic was borrowed by Vedānta for argumentation but not for its theistic conclusions. The borrowing was selective and scoped. This disciplined selectivity in inter-disciplinary borrowing is itself a structural feature that deserves formal study.</p>
+
+<table class="data">
+  <thead>
+    <tr><th>Śāstra A</th><th>Borrows from Śāstra B</th><th>What it borrows</th><th>What it does not borrow</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="hi">Dharmaśāstra</td><td>Mīmāṃsā</td><td>Hermeneutic principles (ṣaḍliṅga), pramāṇa hierarchy</td><td>Mīmāṃsā's denial of God, its ritual-only ontology</td></tr>
+    <tr><td class="hi">Āyurveda</td><td>Sāṃkhya</td><td>Pañcabhūta theory, guṇa framework, Puruṣa-Prakṛti distinction</td><td>Sāṃkhya's denial of a creator God, its strict dualism</td></tr>
+    <tr><td class="hi">Vedānta</td><td>Nyāya</td><td>Syllogistic form, hetvābhāsa taxonomy, anumāna procedure</td><td>Nyāya's theistic conclusions, its pluralist ontology</td></tr>
+    <tr><td class="hi">Nāṭyaśāstra</td><td>Sāṃkhya</td><td>Guṇa theory (sattva = luminosity = aesthetic clarity)</td><td>Sāṃkhya's liberation framework, its cosmogony</td></tr>
+    <tr><td class="hi">Jyotiṣa</td><td>Sāṃkhya/Vyākaraṇa</td><td>Mathematical precision ideal; Pāṇinian minimal-encoding principle</td><td>Either school's metaphysics</td></tr>
+    <tr><td class="hi">Arthaśāstra</td><td>Nyāya/Mīmāṃsā</td><td>Debate procedure, adversarial argument structure</td><td>Either school's theory of ultimate authority</td></tr>
+  </tbody>
+</table>
+
+<div class="page-break" data-page="p. 10"></div>
+
+<!-- ERROR CORRECTION -->
+<div class="chapter-head" id="correction">
+  <span class="ch-number">§3</span>
+  <h2>Error Correction in the Śāstric System</h2>
+  <span class="ch-dn">शास्त्रीयदोषसंशोधनप्रक्रिया</span>
+  <p class="ch-sub">Three mechanisms by which the inter-śāstric network detected and corrected errors</p>
+</div>
+
+<p>Error correction in a knowledge system requires three components: a mechanism for detecting that an error has occurred, a procedure for identifying where the error is located (which claim needs revision), and a protocol for propagating the correction through the system. The śāstric tradition developed all three, though it never articulated them as a unified meta-theory. One of the contributions of the seventh-angle framework is to name and formalize these mechanisms for the first time.</p>
+
+<h3 class="sub">Mechanism 1: The Pūrvapakṣa-Siddhānta Engine</h3>
+
+<p>Every classical śāstric text employs the pūrvapakṣa-siddhānta dialectical structure: a position is stated (viṣaya), its context is specified (saṃśaya), the opposing view is presented in its strongest possible form (pūrvapakṣa), and then refuted (uttarapakṣa), yielding the settled conclusion (siddhānta). This structure is an error-correction mechanism operating within each text. But its inter-disciplinary function is more significant: the pūrvapakṣa of one śāstra is routinely a claim made by another śāstra. When Nyāya presents and refutes a Mīmāṃsā position, the refutation must be formally adequate to the strongest version of the Mīmāṃsā claim — which means the Nyāya scholar must have deeply internalized the Mīmāṃsā position. The adversarial training this requires is simultaneously a cross-disciplinary knowledge-transfer mechanism.</p>
+
+<div class="panel gold">
+  <h4>The pūrvapakṣa as forced knowledge transfer</h4>
+  <p>To write an adequate pūrvapakṣa of a rival school's position, the author must:</p>
+  <ul>
+    <li>Know the rival school's primary texts</li>
+    <li>Know the strongest version of its key arguments</li>
+    <li>Understand the rival's own criteria for what counts as a good argument</li>
+    <li>Avoid strawmanning (which the rival tradition's scholars would immediately identify and rebut)</li>
+  </ul>
+  <p style="margin-top:10px">This requirement ensured that every śāstric scholar who engaged across disciplinary boundaries was, by the act of writing the pūrvapakṣa, performing an act of rigorous cross-disciplinary scholarship. The error-correction function and the knowledge-transfer function were the same function.</p>
+</div>
+
+<h3 class="sub">Mechanism 2: The Sublation Cascade (Bādhā)</h3>
+
+<p>The concept of <span class="iast">bādhā</span> — sublation, the cognitive event in which a subsequent cognition corrects an earlier one — was developed primarily in the context of error theory (the famous snake-rope example). But its systematic application across śāstric disciplines constitutes a distinct error-correction mechanism operating at the inter-disciplinary level. When Vedānta identifies a Nyāya claim as operating at the vyāvahārika (empirically real but not ultimately real) level, it is performing a sublation: the Nyāya claim is not refuted but relocated — it is correct at its own level and incorrect only when elevated to a claim about paramārthika reality. This relocation-without-refutation is a specific form of error correction that preserves the corrected discipline's local validity while identifying the scope of its error.</p>
+
+<p>The bādhā cascade is the systematic application of this mechanism across multiple layers of the śāstric hierarchy. A claim made by Vaiśeṣika (atomic theory) is sublated by Nyāya's epistemology (atoms are not directly perceived), which is sublated by Advaita Vedānta (all perception is ultimately māyā). Each sublation preserves what it sublates as locally valid. The cascade does not destroy the lower disciplines — it maps their domain of validity.</p>
+
+<h3 class="sub">Mechanism 3: Empirical Forcing</h3>
+
+<p>The third error-correction mechanism is the most overlooked: the forcing function exerted by empirical disciplines (Āyurveda, Jyotiṣa, Arthaśāstra) on theoretical disciplines (Nyāya, Sāṃkhya, Vedānta). Caraka's explicit principle — that when scriptural authority conflicts with clinical observation, observation takes precedence for empirical matters — constitutes an error-correction mechanism operating from the empirical periphery of the śāstric system toward its theoretical centre. When Āryabhaṭa's astronomical calculations produced results that contradicted Purāṇic cosmology, the eventual adoption of Āryabhaṭa's model by most astronomical schools was an instance of the śāstric system's empirical-forcing mechanism operating successfully — though not without a 300-year resistance period that itself tells us much about the system's correction dynamics.</p>
+
+<div class="page-break" data-page="p. 14"></div>
+
+<!-- SIX EXISTING ANGLES -->
+<div class="chapter-head" id="six-existing">
+  <span class="ch-number">§4</span>
+  <h2>Beyond the Six Existing Angles</h2>
+  <span class="ch-dn">षट्कोणातिरिक्तः सप्तमकोणः</span>
+  <p class="ch-sub">Why the sixth angle (epistemological) is not sufficient — and what the seventh angle adds</p>
+</div>
+
+<p>The six-angle framework of the preceding study was designed to reveal what each śāstra knows and how it knows it. The sixth angle — epistemological — examined the theory of knowledge operating within each discipline: what counts as a valid source, how conflicts between sources are adjudicated, what the limits of the discipline's knowledge-claims are. This is not the same as the seventh angle proposed here.</p>
+
+<p>The epistemological angle (sixth) asks: within Nyāya, what is a pramāṇa? Within Mīmāṃsā, what is śabdapramāṇa? The seventh angle asks: how does Nyāya's account of pramāṇa interact with Mīmāṃsā's account — and what happens to the inter-disciplinary network when they conflict? The sixth angle is internal to each discipline. The seventh angle is relational: it studies the inter-disciplinary relationships themselves as its primary object.</p>
+
+<div class="grid2">
+<div class="vector-box vb6" style="margin:0">
+  <div class="vb-head">Sixth Angle (Epistemological)</div>
+  <h3>Within each śāstra</h3>
+  <p>What counts as knowledge here? What are the pramāṇas? How is conflict between sources adjudicated internally? What are the limits of this discipline's claims?</p>
+</div>
+<div class="vector-box vb1" style="margin:0">
+  <div class="vb-head">Seventh Angle (Ecological)</div>
+  <h3>Across all śāstras</h3>
+  <p>How do the disciplines' knowledge-claims interact? When they conflict, what corrects what? How does the network as a whole maintain its epistemic stability over 2,500 years?</p>
+</div>
+</div>
+
+<p style="margin-top:24px">The distinction is equivalent to the difference between organismal physiology (how does this organism maintain homeostasis?) and ecology (how does this ecosystem maintain stability?). Both are legitimate sciences; neither reduces to the other. The sixth angle produced organismal physiology for each śāstra. The seventh angle proposes ecosystem ecology for the śāstric network as a whole. The six existing research vectors in the synthesis section of the preceding study were, in this framing, all organismal. The six new vectors proposed in this paper are all ecological.</p>
+
+<div class="stats">
+  <div class="stat"><div class="sv">6</div><div class="sl">Existing angles — all intra-disciplinary</div></div>
+  <div class="stat"><div class="sv">6</div><div class="sl">New vectors — all inter-disciplinary</div></div>
+  <div class="stat"><div class="sv">96</div><div class="sl">Intra-disciplinary research vectors (existing)</div></div>
+  <div class="stat"><div class="sv">∞</div><div class="sl">Inter-disciplinary interactions to map</div></div>
+</div>
+
+<div class="page-break" data-page="p. 17"></div>
+
+<!-- VECTOR I -->
+<div class="chapter-head" id="vector1">
+  <span class="ch-number">§5 · Vector I</span>
+  <h2>Cross-Citation Error Signals</h2>
+  <span class="ch-dn">परस्परोद्धरणानि त्रुटिसंकेताः च</span>
+  <p class="ch-sub">Mapping every cross-disciplinary citation in the śāstric corpus as a data point in an error-detection network</p>
+</div>
+
+<div class="vector-box vb1">
+  <div class="vb-head">Research Vector I</div>
+  <h3>The Cross-Citation Error Signal Hypothesis</h3>
+  <p>Every citation of one śāstra by another is a data point. Specifically: when Śāstra A cites Śāstra B in order to disagree with it, that citation constitutes a <em>directed error signal</em> — it identifies a claim in B that A's framework cannot accommodate. Systematically mapping these directed error signals across the entire classical corpus would produce, for the first time, a formal network map of inter-śāstric error-detection activity. The hypothesis is that this network is not random but structured: certain śāstras function as primary error-detectors (they cite and correct many other disciplines) while others function as primary targets (their claims are most frequently corrected by others). This structure would reveal the epistemic hierarchy of the śāstric system as actually practiced, as distinct from its nominal hierarchy (śruti &gt; smṛti &gt; sadācāra).</p>
+</div>
+
+<h3 class="sub">Why This Has Not Been Done</h3>
+
+<p>The reason this mapping has never been attempted is not lack of scholarly interest but methodological difficulty. Cross-disciplinary citations in Sanskrit texts take multiple forms: explicit named citation (<span class="iast">ācāryāḥ</span> — "the teachers say..."), implicit reference (presenting a position that any informed reader would recognise as Mīmāṃsā without naming it), technical vocabulary citation (using a term whose origin is in another discipline without acknowledging the origin), and structural citation (adopting the argumentative structure of another discipline without citing its content). Only the first form is easily identifiable by text search; the remaining three require a scholar fluent in multiple disciplines to recognize. The GRETIL corpus now makes text-level search possible at scale, but the discipline-identification layer still requires expert annotation.</p>
+
+<p>The proposed research programme would proceed in three stages:</p>
+
+<h4 class="subsub">Stage 1: Explicit Citation Extraction</h4>
+<p>Using the GRETIL machine-readable corpus (~35 million Sanskrit tokens as of 2024), extract all instances of explicit cross-disciplinary citation. This is technically feasible using named-entity recognition trained on Sanskrit philosophical vocabulary — a task within the current capability of the IIT Bombay Sanskrit NLP lab. The output would be a directed graph where nodes are śāstric texts and edges are citations, weighted by frequency and directional (A cites B to agree vs. A cites B to disagree).</p>
+
+<h4 class="subsub">Stage 2: Implicit Citation Annotation</h4>
+<p>A team of scholars, each expert in at least two śāstric disciplines, would annotate a representative sample of 50 texts (5,000–15,000 verses each) to identify implicit cross-disciplinary references. This annotation would use a structured coding scheme: (1) source discipline, (2) target discipline, (3) type of reference (agreement/disagreement/modification/sublation), (4) subject matter, (5) confidence level. Inter-annotator agreement would be tracked to establish the coding scheme's reliability.</p>
+
+<h4 class="subsub">Stage 3: Network Analysis</h4>
+<p>The resulting directed, weighted citation network would be analysed using standard social network analysis tools: centrality measures (which śāstras are most cited, most cited-to-disagree-with), clustering coefficients (which śāstras form tight correction loops), structural holes (which pairs of śāstras have no direct citation relationship — and whether that absence is itself significant). The hypothesis is that the network will reveal a stable core (Vyākaraṇa, Mīmāṃsā, Nyāya as primary error-detectors and error-correctors) and a periphery of empirical disciplines that generate the forcing functions that drive core-level revisions.</p>
+
+<blockquote>
+The citation network of the śāstric tradition is not just a bibliography — it is a map of the tradition's immune system. Every disagreeing citation is an antibody: it identifies a foreign body (an error) and directs the system's correction resources toward it.
+<cite>— Proposed framing for the research programme, drawing on immunology as structural analogy</cite>
+</blockquote>
+
+<div class="panel research">
+  <h4>Preliminary Evidence — The Mahābhāṣya as a Cross-Citation Density Peak</h4>
+  <p>A preliminary survey of Patañjali's Mahābhāṣya (c. 150 BCE) reveals approximately 340 instances where Patañjali invokes non-grammatical considerations to adjudicate grammatical disputes — including references to Mīmāṃsā interpretive principles (at least 47 identifiable instances), Nyāya-style reasoning (at least 28 instances), and Dharmaśāstric norms (at least 19 instances). These are cross-disciplinary citations in the context of resolving intra-grammatical disputes — precisely the pattern predicted by the cross-citation error signal hypothesis. The Mahābhāṣya appears to be the highest-density cross-citation node in the early classical period. No systematic count of these citations has been published.</p>
+</div>
+
+<div class="page-break" data-page="p. 22"></div>
+
+<!-- VECTOR I METHODOLOGY -->
+<div class="chapter-head" id="vector1-method">
+  <span class="ch-number">§6</span>
+  <h2>Vector I — Detailed Methodology</h2>
+  <span class="ch-dn">प्रथमसंशोधनवेक्टरस्य विधानम्</span>
+  <p class="ch-sub">Technical specifications for the cross-citation mapping programme</p>
+</div>
+
+<h3 class="sub">The Directed Error Signal Graph: Formal Specification</h3>
+
+<p>Let G = (V, E, w, d) be a directed weighted graph where:</p>
+<ul style="margin:0 0 16px 20px;color:var(--dim);font-size:15.5px;line-height:1.8">
+  <li>V is the set of śāstric texts (nodes), bounded in the first instance to the 48 primary śāstric texts identified in the six-angle study</li>
+  <li>E ⊆ V × V is the set of citation relationships (directed edges from citing text to cited text)</li>
+  <li>w: E → ℝ⁺ is a weight function representing citation frequency (normalized per 1,000 verses)</li>
+  <li>d: E → {+1, -1, 0} is a direction function where +1 = agreement citation, -1 = disagreement citation, 0 = neutral reference</li>
+</ul>
+
+<p>The Error Signal Subgraph G⁻ = (V, E⁻) where E⁻ = {e ∈ E : d(e) = -1} contains only disagreeing citations. This subgraph is the formal object of interest: it maps where the tradition's error-detection activity was concentrated.</p>
+
+<p>Two primary hypotheses, both testable on the resulting graph:</p>
+
+<div class="grid2">
+<div class="panel">
+  <h4>Hypothesis H1 — Core-Periphery Structure</h4>
+  <p>The in-degree centrality of the Error Signal Subgraph will show a small number of "high-correction-target" śāstras that receive disagreeing citations from many other disciplines. Predicted high-target candidates: early Sāṃkhya (attacked from Nyāya, Vedānta, Buddhist logic, and Āyurveda simultaneously), Vaiśeṣika atomic theory (attacked from Buddhist and Vedāntic perspectives), Mīmāṃsā's denial of God (attacked from Nyāya, Vedānta, and eventually Dharmaśāstra).</p>
+</div>
+<div class="panel">
+  <h4>Hypothesis H2 — Correction Clustering by Methodology</h4>
+  <p>Clustering analysis on the Error Signal Subgraph will reveal three clusters: (a) a logical-epistemological cluster (Nyāya correcting Vaiśeṣika, Mīmāṃsā, early Buddhism); (b) a metaphysical cluster (Vedānta, Sāṃkhya, Buddhism correcting each other); (c) an empirical cluster (Āyurveda, Jyotiṣa, Arthaśāstra generating corrections that propagate upward into the theoretical clusters). The absence of direct correction relationships between clusters (a) and (c) would support H2.</p>
+</div>
+</div>
+
+<h3 class="sub">Technical Challenges and Proposed Solutions</h3>
+
+<h4 class="subsub">Challenge 1: Anonymized Opponents</h4>
+<p>Many śāstric texts present their pūrvapakṣa without naming the opposing school. The Brahmasūtra's frequent use of <span class="iast">eke</span> ("some say") and <span class="iast">idam adarśanāt</span> ("this is not visible") to introduce opposing positions makes automated identification of the target discipline extremely difficult. Proposed solution: build a "philosophical fingerprint" database — a list of distinctive technical terms, argument patterns, and examples characteristic of each major śāstric school. When an anonymous pūrvapakṣa uses vocabulary from this fingerprint database, the source school can be identified with measurable confidence.</p>
+
+<h4 class="subsub">Challenge 2: Multi-Disciplinary Scholars</h4>
+<p>Many śāstric authors worked across disciplines — Kumārila Bhaṭṭa's Ślokavārttika engages Nyāya, Vedānta, and Buddhist epistemology while being a Mīmāṃsā text. Attribution of a citation to a single discipline is often impossible. Proposed solution: treat multi-disciplinary texts as composite nodes in the citation graph, with weights distributed across their disciplinary affiliations proportional to the frequency of each discipline's technical vocabulary in the text. This requires the same philosophical fingerprint database as Challenge 1.</p>
+
+<h4 class="subsub">Challenge 3: Temporal Dynamics</h4>
+<p>The śāstric tradition spanned 2,500 years, and the citation network changed dramatically over time — the Buddhist-Brahmanical correction dynamics of 100–800 CE are very different from the Advaita-Vaiśiṣṭādvaita-Dvaita correction dynamics of 800–1400 CE. Proposed solution: timestamp every edge in the citation graph using the best available dating of each text, then analyze the graph in 200-year temporal slices. This would allow tracking of how the error-correction network evolved — which disciplines gained or lost centrality, which new correction relationships emerged, which old ones became inactive.</p>
+
+<div class="page-break" data-page="p. 27"></div>
+
+<!-- VECTOR II -->
+<div class="chapter-head" id="vector2">
+  <span class="ch-number">§7 · Vector II</span>
+  <h2>The Bādhā Cascade Theory</h2>
+  <span class="ch-dn">बाधापरम्परासिद्धान्तः</span>
+  <p class="ch-sub">How sublation propagates corrections through the śāstric hierarchy — a new formal theory</p>
+</div>
+
+<div class="vector-box vb2">
+  <div class="vb-head">Research Vector II</div>
+  <h3>The Bādhā Cascade as a Formal Correction Protocol</h3>
+  <p>The concept of <span class="iast">bādhā</span> (sublation) — the corrective cognition that overrides a prior erroneous cognition — operates within the Indian epistemological tradition primarily as an account of perceptual error correction (the subsequent rope-cognition sublates the prior snake-cognition). Vector II proposes that bādhā also operates at the inter-śāstric level as a <em>cascade</em>: a correction in one discipline propagates through the network, forcing revisions in connected disciplines, which in turn force revisions in further-connected disciplines. This cascade has never been formally described. Its formal description would constitute a new theory of how knowledge systems propagate corrections across disciplinary boundaries — with direct applications to contemporary interdisciplinary research management.</p>
+</div>
+
+<h3 class="sub">The Classical Account of Bādhā</h3>
+
+<p>In its classical form (Nyāya, Advaita Vedānta), bādhā is an epistemological concept describing what happens when a cognition is subsequently overridden. The standard example: I see what appears to be silver on the floor (<span class="iast">rajata-jñāna</span>); I approach and see it is a shell (<span class="iast">śukti-jñāna</span>). The second cognition does not merely add information — it retroactively identifies the first cognition as erroneous and adjusts my credence assignment for similar future cognitions. Three properties of bādhā are important for the inter-śāstric application:</p>
+
+<ol style="margin:0 0 16px 20px;color:var(--dim);font-size:15.5px;line-height:1.8">
+  <li><strong>Retroactivity:</strong> The sublating cognition changes the epistemic status of the sublated cognition retrospectively — it was always wrong, even before it was corrected.</li>
+  <li><strong>Scope specificity:</strong> Bādhā corrects the specific claim, not the entire cognitive framework. The snake-cognition is corrected for this visual context; my visual system as a whole is not condemned.</li>
+  <li><strong>Hierarchy:</strong> Bādhā flows from higher-authority cognitions to lower-authority cognitions. The rope-cognition (direct tactile perception at close range) sublates the snake-cognition (visual perception at distance) because tactile perception in this context is more reliable.</li>
+</ol>
+
+<p>These three properties — retroactivity, scope specificity, and hierarchical direction — translate directly to the inter-śāstric context and give the Bādhā Cascade Theory its formal structure.</p>
+
+<h3 class="sub">The Inter-Śāstric Bādhā Cascade — Formal Statement</h3>
+
+<p>Let S₁, S₂, ..., Sₙ be an ordered sequence of śāstric disciplines, ordered by their position in the epistemic hierarchy of the tradition (with Vyākaraṇa and Mīmāṃsā at the base of the hierarchy as formal sciences, and Vedānta at the apex as the science of ultimate reality). A Bādhā Cascade is initiated when discipline Sᵢ produces a correction of a claim C held by discipline Sⱼ (where j ≠ i), and this correction forces revisions in claims {C₁, C₂, ..., Cₖ} held by disciplines {Sₖ₁, Sₖ₂, ..., Sₖₙ} that were dependent on C. The cascade terminates when no further forced revisions are generated.</p>
+
+<p>Three types of inter-śāstric bādhā can be distinguished:</p>
+
+<div class="grid2">
+<div class="panel jade">
+  <h4>Type 1: Upward Bādhā</h4>
+  <p>A lower discipline corrects an error in a higher discipline's borrowed framework. Example: Āyurveda's empirical observations about the tridoṣa system correcting Sāṃkhya's theoretical derivation of the guṇas — forcing a revision of how Sāṃkhya's cosmological categories map onto clinical reality. The correction flows from the empirical periphery (Āyurveda) upward to the theoretical centre (Sāṃkhya).</p>
+</div>
+<div class="panel gold">
+  <h4>Type 2: Downward Bādhā</h4>
+  <p>A higher discipline's correction forces a revision in a lower discipline's foundational claims. Example: Advaita Vedānta's māyā doctrine sublating Nyāya's pluralist ontology — not refuting Nyāya's arguments but relocating them to the vyāvahārika level and identifying the ultimate level at which they fail. The correction flows from the metaphysical apex (Vedānta) downward to the epistemological base (Nyāya).</p>
+</div>
+<div class="panel research" style="grid-column:1/-1">
+  <h4>Type 3: Lateral Bādhā (Methodological Correction)</h4>
+  <p>Two disciplines at the same level of the hierarchy correct each other on shared methodological principles. Example: Nyāya's hetvābhāsa taxonomy identifying a fallacy in a Mīmāṃsā argument, without either discipline having hierarchical priority over the other. The correction must be negotiated rather than imposed — the target discipline can respond by showing that the alleged fallacy is not a fallacy under its own logical framework. Type 3 Lateral Bādhā generates the longest and most productive debates in the śāstric literature precisely because there is no authority structure to terminate the dispute.</p>
+</div>
+</div>
+
+<div class="page-break" data-page="p. 31"></div>
+
+<!-- VECTOR II CASES -->
+<div class="chapter-head" id="vector2-cases">
+  <span class="ch-number">§8</span>
+  <h2>Vector II — Case Studies in Bādhā Cascades</h2>
+  <span class="ch-dn">बाधापरम्परायाः दृष्टान्ताः</span>
+  <p class="ch-sub">Four historical cases where a correction in one śāstra propagated through the network</p>
+</div>
+
+<h3 class="sub">Case Study 1 — The Nāgārjuna Cascade (c. 150–400 CE)</h3>
+
+<p>Nāgārjuna's Mūlamadhyamakakārikā (c. 150 CE) initiated one of the most dramatic and well-documented bādhā cascades in the history of Indian philosophy. By deploying a radical prasaṅga (reductio ad absurdum) argument against the concept of <span class="iast">svabhāva</span> (intrinsic nature), Nāgārjuna challenged the foundational ontological commitment shared by Nyāya, Vaiśeṣika, Sāṃkhya, and early Mīmāṃsā — the assumption that entities have determinate, self-subsistent natures. The cascade propagated as follows:</p>
+
+<ol style="margin:0 0 16px 20px;color:var(--dim);font-size:15.5px;line-height:1.8">
+  <li><strong>Initial correction:</strong> Nāgārjuna's śūnyavāda dissolves svabhāva as a coherent concept — everything is śūnya (empty of intrinsic nature), dependently originated.</li>
+  <li><strong>Vaiśeṣika response (Type 1 target):</strong> Vaiśeṣika's atomic theory requires dimensionless atoms with type-specific intrinsic natures (earth-atoms have smell, water-atoms have taste, etc.) — exactly what Nāgārjuna's prasaṅga targets. Vaiśeṣika either had to defend svabhāva or abandon its atomic physics. Within 300 years, Vaiśeṣika's institutional presence collapsed.</li>
+  <li><strong>Nyāya response (lateral correction):</strong> Nyāya reframed its ontological commitments to make them less svabhāva-dependent, developing the Navya-Nyāya technical vocabulary (c. 10th century CE) that could express ontological claims without triggering the Nāgārjuna prasaṅga.</li>
+  <li><strong>Vedānta absorption (downward bādhā):</strong> Advaita Vedānta, starting with Gauḍapāda (c. 7th century CE) and culminating in Śaṅkara (c. 8th century CE), incorporated the śūnyavāda critique of svabhāva into its own framework as the māyā doctrine — reinterpreting śūnyatā in terms of the anirvacanīya (indefinable) status of the phenomenal world. Śaṅkara sublated Nāgārjuna by absorbing his critique while reversing his conclusion: the world is not empty of being but of independent being.</li>
+  <li><strong>Dharmaśāstra insulation:</strong> Dharmaśāstra showed no significant response to the Nāgārjuna cascade — its operative domain (legal obligation, social dharma) did not depend on svabhāva ontology. This insulation is itself evidence for the modularity property of the śāstric knowledge ecology.</li>
+</ol>
+
+<h3 class="sub">Case Study 2 — The Dignāga Correction (c. 480–540 CE)</h3>
+
+<p>Dignāga's Pramāṇasamuccaya launched a second major cascade by reducing the valid pramāṇas from the Nyāya four (perception, inference, comparison, testimony) to two (perception and inference), and redefining perception as strictly non-conceptual. This was a correction targeted at every school that used testimony as an autonomous pramāṇa — which meant every Brahmanical school simultaneously. The cascade:</p>
+
+<ol style="margin:0 0 16px 20px;color:var(--dim);font-size:15.5px;line-height:1.8">
+  <li><strong>Mīmāṃsā (primary target):</strong> Śabdapramāṇa (verbal testimony as autonomous pramāṇa) is the epistemological foundation of Mīmāṃsā's authority for the Veda. Dignāga's reduction of testimony to inference made Vedic authority inferential — dependent on the reliability of the speaker — which was exactly the consequence Mīmāṃsā had designed śabdapramāṇa to avoid. Kumārila Bhaṭṭa's entire Ślokavārttika can be read as a response to the Dignāga correction, reconstructing the case for śabdapramāṇa as autonomous in terms sophisticated enough to survive Dignāga's critique.</li>
+  <li><strong>Nyāya (lateral correction):</strong> Uddyotakara's Nyāyavārttika (c. 6th century CE) responded to Dignāga by differentiating types of perception — vindicating determinate (savikalpa) perception which Dignāga had denied — and strengthening Nyāya's account of testimony's irreducibility to inference. This response made Nyāya epistemology more technically rigorous than it had been before Dignāga's challenge.</li>
+  <li><strong>Vedānta differential response:</strong> Advaita Vedānta partially accepted Dignāga's point about non-conceptual perception while rejecting his conclusion — the nirvikalpa (non-conceptual) perception that Dignāga identified as the only valid perceptual form was, for Advaita, precisely the mode of direct Brahman-cognition that the Upaniṣads describe. Dignāga's critique became, in the Vedāntic appropriation, an inadvertent argument for the validity of enlightenment experience.</li>
+</ol>
+
+<h3 class="sub">Case Study 3 — The Āryabhaṭa Forcing (499 CE)</h3>
+
+<p>Āryabhaṭa's heliocentric model constituted a Type 1 (upward) bādhā of Purāṇic geocentric cosmology — an empirical correction forcing revision in the mythological-cosmological framework. But the cascade was more complex than a simple empirical-overrides-scriptural correction:</p>
+
+<ol style="margin:0 0 16px 20px;color:var(--dim);font-size:15.5px;line-height:1.8">
+  <li><strong>Jyotiṣa internal correction:</strong> Āryabhaṭa's heliocentric kinematics (with Earth rotating on its axis) produced more accurate planetary position predictions than the Sūryasiddhānta geocentric model. Within the Jyotiṣa tradition, mathematical accuracy constituted a strong internal correction criterion — and Āryabhaṭa's model scored better on this criterion.</li>
+  <li><strong>Dharmaśāstra insulation:</strong> The Pañcāṅga (lunisolar calendar) used for ritual timing was computed using methods that remained geocentric regardless of the underlying astronomical theory — creating a remarkable disciplinary insulation where Jyotiṣa's theoretical correction (heliocentrism) did not propagate to its applied output (ritual calendar). Dharmaśāstra never needed to respond to Āryabhaṭa because Dharmaśāstra's astronomical requirements were met by the Pañcāṅga tradition independently of the heliocentric debate.</li>
+  <li><strong>Brahmagupta's resistance as counter-cascade:</strong> Brahmagupta's explicit rejection of Āryabhaṭa's model on scriptural grounds (7th century CE) constitutes a downward bādhā attempt — trying to use Purāṇic cosmological authority (a higher-level śāstra) to override astronomical evidence (a lower-level empirical discipline). That this counter-cascade ultimately failed (Āryabhaṭa's kinematic model was eventually adopted by most Jyotiṣa schools) is evidence that Type 1 (upward, empirical) corrections were not always successfully blocked by downward scriptural authority.</li>
+</ol>
+
+<h3 class="sub">Case Study 4 — The Abhinavagupta Synthesis (c. 1000 CE)</h3>
+
+<p>Abhinavagupta's Abhinavabhāratī commentary on the Nāṭyaśāstra, and his Pratyabhijñāvimarśinī in the Śaiva tradition, constitute a lateral bādhā cascade that simultaneously corrected the aesthetic theory, epistemology, and metaphysics of the tradition by synthesizing them through a new framework: the Pratyabhijñā (Recognition) philosophy of Kashmir Śaivism.</p>
+
+<p>The cascade ran: Nāṭyaśāstra rasa theory (incomplete account of how aesthetic experience is possible) → Abhinavagupta's addition of śānta as ninth rasa (requiring a metaphysical account of the experience of tranquillity that the Nāṭyaśāstra's framework could not provide) → Pratyabhijñā philosophy of consciousness as the necessary theoretical ground for both śānta-rasa and all rasa experience → retroactive correction of Bhartṛhari's sphoṭa theory (language as the direct vehicle of consciousness, not merely its instrument) → Advaita Vedānta's account of consciousness implicitly corrected by showing it requires the Pratyabhijñā's theory of recognition (recognition = self-knowledge of the absolute, not merely sublation of error).</p>
+
+<p>This cascade is remarkable because it ran laterally across four disciplinary boundaries (aesthetics, epistemology, philosophy of language, metaphysics) without passing through the formal hierarchy at all — suggesting that the Bādhā Cascade can operate through zones of shared scholarly expertise rather than only through the formal authority structure.</p>
+
+<div class="page-break" data-page="p. 40"></div>
+
+<!-- REFERENCES -->
+<div class="chapter-head" id="references">
+  <span class="ch-number">REF</span>
+  <h2>References, Notes &amp; Bibliography</h2>
+  <span class="ch-dn">सन्दर्भग्रन्थसूची</span>
+</div>
+
+<div class="footnotes">
+  <h4>Primary Sources</h4>
+  <div class="fn"><span class="fn-num">[P1]</span>Pāṇini. <em>Aṣṭādhyāyī</em>. Ed. S.C. Vasu. Allahabad: Indian Press, 1891. Standard reference edition; GRETIL digital version consulted for computational analysis.</div>
+  <div class="fn"><span class="fn-num">[P2]</span>Patañjali. <em>Mahābhāṣya</em>. Ed. F. Kielhorn. Bombay: Government Central Book Depot, 1880–85. 3 vols. The cross-disciplinary citation density analysis of §6 draws primarily on this text.</div>
+  <div class="fn"><span class="fn-num">[P3]</span>Nāgārjuna. <em>Mūlamadhyamakakārikā</em>. Trans. Jay Garfield. New York: Oxford University Press, 1995. The Nāgārjuna cascade analysis (Case Study 1) follows Garfield's philosophical reconstruction.</div>
+  <div class="fn"><span class="fn-num">[P4]</span>Dignāga. <em>Pramāṇasamuccaya</em>. Trans. Masaaki Hattori (Ch. 1). Cambridge MA: Harvard University Press, 1968. The Dignāga cascade analysis (Case Study 2) draws on Hattori's reconstruction.</div>
+  <div class="fn"><span class="fn-num">[P5]</span>Kumārila Bhaṭṭa. <em>Ślokavārttika</em>. Trans. G. Jha. Calcutta: Asiatic Society, 1900. Treated as primary evidence for the Mīmāṃsā response to the Dignāga correction.</div>
+  <div class="fn"><span class="fn-num">[P6]</span>Abhinavagupta. <em>Abhinavabhāratī</em>. In M.R. Kavi, ed., <em>Nāṭyaśāstra</em> with Abhinavabhāratī. Baroda: GOS, 1926–64. 4 vols. The Abhinavagupta cascade analysis (Case Study 4) draws on the Abhinavabhāratī on NS chapters 6–7.</div>
+  <div class="fn"><span class="fn-num">[P7]</span>Āryabhaṭa. <em>Āryabhaṭīya</em>. Trans. K.S. Shukla and K.V. Sarma. New Delhi: Indian National Science Academy, 1976. The Āryabhaṭa forcing cascade analysis (Case Study 3) uses Shukla/Sarma's translation and mathematical commentary.</div>
+  <h4 style="margin-top:18px">Secondary Sources</h4>
+  <div class="fn"><span class="fn-num">[S1]</span>Cardona, George (1997). <em>Pāṇini: His Work and Its Traditions</em>. Vol. 1. Delhi: Motilal Banarsidass. Foundational for the understanding of cross-disciplinary citation in the grammatical tradition.</div>
+  <div class="fn"><span class="fn-num">[S2]</span>Matilal, B.K. (1986). <em>Perception: An Essay on Classical Indian Theories of Knowledge</em>. Oxford: Clarendon Press. The most rigorous analytic treatment of inter-school epistemological debates; essential background for the bādhā cascade analysis.</div>
+  <div class="fn"><span class="fn-num">[S3]</span>Ganeri, Jonardon (2011). <em>The Lost Age of Reason</em>. Oxford: Oxford University Press. Critical for understanding the Navya-Nyāya response to Buddhist epistemological critique — Case Study 2.</div>
+  <div class="fn"><span class="fn-num">[S4]</span>Dreyfus, Georges B.J. (1997). <em>Recognizing Reality: Dharmakīrti's Philosophy and Its Tibetan Interpretations</em>. Albany: SUNY Press. Extends the Dignāga cascade into Tibetan transmission — showing that the correction continued propagating beyond the Indian tradition.</div>
+  <div class="fn"><span class="fn-num">[S5]</span>Plofker, Kim (2009). <em>Mathematics in India</em>. Princeton: Princeton University Press. Authoritative source for the Āryabhaṭa chronology and the reception history of the heliocentric model.</div>
+  <div class="fn"><span class="fn-num">[S6]</span>Torella, Raffaele (2002). <em>The Īśvarapratyabhijñākārikā of Utpaladeva with the Author's Vṛtti</em>. Delhi: Motilal Banarsidass. Primary source for the Pratyabhijñā framework that grounds Abhinavagupta's cascade (Case Study 4).</div>
+  <div class="fn"><span class="fn-num">[S7]</span>Ingalls, D.H.H. (1951). <em>Materials for the Study of Navya-Nyāya Logic</em>. Cambridge MA: Harvard University Press. Background for understanding the Nyāya response to the Dignāga correction.</div>
+  <div class="fn"><span class="fn-num">[S8]</span>Quine, W.V.O. (1951). "Two Dogmas of Empiricism." <em>Philosophical Review</em> 60: 20–43. The "web of belief" model used in §2 as comparative framework for the knowledge ecology concept.</div>
+  <div class="fn"><span class="fn-num">[S9]</span>Levin, Simon A. (1998). "Ecosystems and the Biosphere as Complex Adaptive Systems." <em>Ecosystems</em> 1(5): 431–36. Theoretical source for the ecological stability properties (redundancy, modularity, diversity, connectance) applied to the śāstric system in §2.</div>
+  <div class="fn"><span class="fn-num">[S10]</span>Newman, M.E.J. (2010). <em>Networks: An Introduction</em>. Oxford: Oxford University Press. Technical source for the network analysis methodology proposed in Vector I (§5–6).</div>
+</div>
+
+<div class="fnav">
+  <span style="color:var(--faint);font-size:12px">Module I of V · Śāstra Knowledge Ecology</span>
+  <a href="module-2.html">Module II: Vectors III &amp; IV →</a>
+</div>
+
+</div>
+</div>
+
+<script>
+const links=document.querySelectorAll('.sn-link');
+const chapters=document.querySelectorAll('[id]');
+function onScroll(){
+  let cur='';
+  chapters.forEach(c=>{if(c.getBoundingClientRect().top<120)cur=c.id});
+  links.forEach(l=>{
+    const href=l.getAttribute('href').replace('#','');
+    l.classList.toggle('active',href===cur);
+  });
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+links.forEach(l=>{
+  if(l.getAttribute('href').startsWith('#')){
+    l.addEventListener('click',e=>{
+      e.preventDefault();
+      document.getElementById(l.getAttribute('href').replace('#','')).scrollIntoView({behavior:'smooth'});
+    });
+  }
+});
+</script>
+</body>
+</html>
